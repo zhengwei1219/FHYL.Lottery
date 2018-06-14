@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LotteryModelStoreContainer" CdmEntityContainer="LotteryEntities">
+    <EntitySetMapping Name="UserInfo">
+      <EntityTypeMapping TypeName="LotteryModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Account">
+      <EntityTypeMapping TypeName="LotteryModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RechargeRecord">
+      <EntityTypeMapping TypeName="LotteryModel.RechargeRecord">
+        <MappingFragment StoreEntitySet="RechargeRecord">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="RechargeMoney" ColumnName="RechargeMoney" />
+          <ScalarProperty Name="RechargeDate" ColumnName="RechargeDate" />
+          <ScalarProperty Name="RechargeBy" ColumnName="RechargeBy" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CashRecord">
+      <EntityTypeMapping TypeName="LotteryModel.CashRecord">
+        <MappingFragment StoreEntitySet="CashRecord">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CashMoney" ColumnName="CashMoney" />
+          <ScalarProperty Name="CashDate" ColumnName="CashDate" />
+          <ScalarProperty Name="CashBy" ColumnName="CashBy" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LotteryResult">
+      <EntityTypeMapping TypeName="LotteryModel.LotteryResult">
+        <MappingFragment StoreEntitySet="LotteryResult">
+          <ScalarProperty Name="NextOpenTime" ColumnName="NextOpenTime" />
+          <ScalarProperty Name="NextExpect" ColumnName="NextExpect" />
+          <ScalarProperty Name="LotteryType" ColumnName="LotteryType" />
+          <ScalarProperty Name="Opentime" ColumnName="Opentime" />
+          <ScalarProperty Name="Opencode" ColumnName="Opencode" />
+          <ScalarProperty Name="Expect" ColumnName="Expect" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BetChildRecord">
+      <EntityTypeMapping TypeName="LotteryModel.BetChildRecord">
+        <MappingFragment StoreEntitySet="BetChildRecord">
+          <ScalarProperty Name="WinState" ColumnName="WinState" />
+          <ScalarProperty Name="Expect" ColumnName="Expect" />
+          <ScalarProperty Name="LotteryType" ColumnName="LotteryType" />
+          <ScalarProperty Name="BetMoney" ColumnName="BetMoney" />
+          <ScalarProperty Name="Odds" ColumnName="Odds" />
+          <ScalarProperty Name="BetInfo" ColumnName="BetInfo" />
+          <ScalarProperty Name="BetType" ColumnName="BetType" />
+          <ScalarProperty Name="BetBallNo" ColumnName="BetBallNo" />
+          <ScalarProperty Name="BetRecordId" ColumnName="BetRecordId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BetRecord">
+      <EntityTypeMapping TypeName="LotteryModel.BetRecord">
+        <MappingFragment StoreEntitySet="BetRecord">
+          <ScalarProperty Name="TotalWinOrLose" ColumnName="TotalWinOrLose" />
+          <ScalarProperty Name="LotteryType" ColumnName="LotteryType" />
+          <ScalarProperty Name="BetUser" ColumnName="BetUser" />
+          <ScalarProperty Name="LotteryState" ColumnName="LotteryState" />
+          <ScalarProperty Name="BetCount" ColumnName="BetCount" />
+          <ScalarProperty Name="BetMoney" ColumnName="BetMoney" />
+          <ScalarProperty Name="BetTime" ColumnName="BetTime" />
+          <ScalarProperty Name="Expect" ColumnName="Expect" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

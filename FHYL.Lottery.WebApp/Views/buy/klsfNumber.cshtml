@@ -1,0 +1,164 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>投注</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="~/Content/login.css?v=1803126" rel="stylesheet" />
+    <link href="~/content/buy/component.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/buy/calculator.css?v=1803127" rel="stylesheet" />
+    <script type="text/javascript" src="~/content/buy/jquery.js"></script>
+    <script type="text/javascript" src="~/Scripts/TimeOut.js?v=11"></script>
+    <script type="text/javascript" src="~/content/buy/modernizr.custom.js"></script>
+    @*<script type="text/javascript" src="~/content/buy/jquery.dlmenu.js"></script>*@
+    <script src="~/Content/buy/jquery.dlmenu.js"></script>
+    <script type="text/javascript" src="~/content/buy/buy.js"></script>
+    <script type="text/javascript">
+       
+    </script>
+
+</head>
+<body>
+
+    <header>
+        <a href="javascript:location.href='/buy/klsf';" class="back">返回</a>
+        <div id="dl-menu1" class="dl-menuwrapper1">
+            <button>@Request.Params["number"] ∨</button>
+            <ul class="dl-menu">
+                <li><a href="/Buy/klsf">两面盘</a></li>
+                <li><a href="/Buy/klsfNumber?number=第1球">第1球</a></li>
+                <li><a href="/Buy/klsfNumber?number=第2球">第2球</a></li>
+                <li><a href="/Buy/klsfNumber?number=第3球">第3球</a></li>
+                <li><a href="/Buy/klsfNumber?number=第4球">第4球</a></li>
+                <li><a href="/Buy/klsfNumber?number=第5球">第5球</a></li>
+                <li><a href="/Buy/klsfNumber?number=第6球">第6球</a></li>
+                <li><a href="/Buy/klsfNumber?number=第7球">第7球</a></li>
+                <li><a href="/Buy/klsfNumber?number=第8球">第8球</a></li>
+            </ul>
+        </div>
+
+        <div id="dl-menu" class="dl-menuwrapper">
+            <button id="dl-menu-button">Open Menu</button>
+            <ul class="dl-menu">
+                <li><a href="/BetRecord/Index?lotteryType=广东快乐十分">投注记录</a></li>
+                <li><a href="/PlayRule/gdklsf">规则介绍</a></li>
+                <li><a href="/Home/Trend?lotteryType=广东快乐十分">开奖走势</a></li>
+            </ul>
+        </div>
+    </header>
+    <script type="text/javascript">
+        var getdataUrl = "/Buy/GetNextData";
+        var n = 0, timer = null;
+        var btns;
+        var currExp = "";
+        var lotteryType = '@ViewBag.lotteryType';
+        $(function () {
+            //countDown();
+            currExp = "@ViewBag.expect";
+            getdata(lotteryType);
+            $('#dl-menu').dlmenu();
+            $('#dl-menu1').dlmenu();
+            ContorlButton(false, lotteryType);
+        });
+        
+        //补零
+        function toDub(n) {
+            return n < 10 ? "0" + n : "" + n;
+        }
+        //计算
+        function SumBuy() {
+            return $("#dv_nums").find(".selected").length;
+        }
+        //计算
+        function SumBuyMoney() {
+            return SumBuy() * 2;
+        }
+</script>
+    <section class="sign-module">
+        <div class="buytitle">
+           <div class="titleleft" id="CurrentExInfo">@ViewBag.lotteryType @ViewBag.expect 期开奖</div><div class="titleright1" id="nextExp">距离 @ViewBag.nextExpect 期</div>
+         <div class="titleleftkj" id="CurrentCodeInfo">@ViewBag.Opencode</div><div id="txtTimer" class="titleright">截止投注: -- : -- : --</div>
+        </div>
+        <div id="dv_nums">
+            <div class="num_sel">
+                <div class="dlt_xh">
+                    <div class="dlt_title">&nbsp;&nbsp;@ViewBag.number</div>
+                    <div class="xh" id='@ViewBag.number'>
+                        <a href="javascript:;">1号</a>
+                        <a href="javascript:;">2号</a>
+                        <a href="javascript:;">3号</a>
+                        <a href="javascript:;">4号</a>
+                        <a href="javascript:;">5号</a>
+                        <ul>
+                            <li>18</li>
+                            <li>18</li>
+                            <li>18</li>
+                            <li>18</li>
+                            <li>18</li>
+                        </ul>
+                        <a href="javascript:;">6号</a>
+                        <a href="javascript:;">7号</a>
+                        <a href="javascript:;">8号</a>
+                        <a href="javascript:;">9号</a>
+                        <a href="javascript:;">10号</a>
+                        <ul>
+                            <li>18</li>
+                            <li>18</li>
+                            <li>18</li>
+                            <li>18</li>
+                            <li>18</li>
+                        </ul>
+                        <a href="javascript:;">11号</a>
+                        <a href="javascript:;">12号</a>
+                        <a href="javascript:;">13号</a>
+                        <a href="javascript:;">14号</a>
+                        <a href="javascript:;">15号</a>
+                        <ul>
+                            <li>18</li>
+                            <li>18</li>
+                            <li>18</li>
+                            <li>18</li>
+                            <li>18</li>
+                        </ul>
+                        <a href="javascript:;">16号</a>
+                        <a href="javascript:;">17号</a>
+                        <a href="javascript:;">18号</a>
+                        <a href="javascript:;">19号</a>
+                        <a href="javascript:;">20号</a>
+                        <ul>
+                            <li>18</li>
+                            <li>18</li>
+                            <li>18</li>
+                            <li>18</li>
+                            <li>18</li>
+                        </ul>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <div class="sub">
+        <div class="div1">
+            <img style="margin: auto;" src="~/images/rec.png" width="28" height="28"  onclick="RecAll()"/></div>
+        <div class="div2" id="dv_buyed">
+            已选择 0 注 0 元
+        </div>
+        <div class="div3" id="dv_pay">
+            下注
+        </div>
+    </div>
+
+</body>
+</html>

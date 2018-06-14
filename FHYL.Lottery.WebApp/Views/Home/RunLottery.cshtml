@@ -1,0 +1,173 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0;" name="viewport">
+    <meta content="user-scalable=no" name="viewport">
+<meta http-equiv="cache-control" content="no-cache" />
+<meta content="telephone=no, address=no" name="format-detection">
+    <title>开奖中心</title>
+    <link href="~/Content/headersub.css?v=180312131" rel="stylesheet" />
+    <link href="~/Content/calculatorForRecord.css?v=1803125" rel="stylesheet" />
+    <link href="~/content/buy/component.css?v=18031311" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="~/content/buy/jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            GetLotteryResult();
+        });
+        function GetLotteryResult() {
+            
+            var GetLotteryResultUrl = '@Url.Action("GetLotteryRecordForNewList", "Home")';
+            $.ajax({
+                type: "POST",
+                url: GetLotteryResultUrl,
+                data: {},
+                success: function (data) {
+                    if (data.length == 0) return;
+                    var listHtml = "";
+                    for (var i = 0; i < data.length; i++) {
+                        listHtml += "<li>"
+                        listHtml += "<div style=\"float:left;\">"
+                        listHtml += "<span class=\"name\">" + data[i].LotteryType + "</span>";
+                        listHtml += "<span class=\"qihao\"> 第" + data[i].Expect + "期 " + ConvertJSONDateToJSDate(data[i].Opentime)+ "</span>";
+                        listHtml += "<div class=\"soft-size\">";
+                        listHtml += " <div class=\"num_sel\">";
+                        listHtml += " <div class=\"dlt_xh\">";
+                        listHtml += " <div class=\"xh\">";
+                        var opencodeArray = data[i].Opencode.split(",");
+                        for (var j = 0; j < opencodeArray.length; j++) {
+                            listHtml += "  <a href=\"javascript:;\" class=\"selected\">" + opencodeArray[j] + "</a>";
+                        }
+                        listHtml += "</div></div></div></div></div>";
+                        listHtml += "<div class='btn_dl_nor'><a href=\"#\"  target='_blank' > 〉 </a></div>";
+                        listHtml += "</li>";
+                    }
+                    $("#kjList").html(listHtml);
+                }
+            });
+        }
+
+        //yyyy-MM-dd HH:mm
+        function getDateTime(date) {
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var hh = date.getHours();
+            var mm = date.getMinutes();
+            return year + "-" + month + "-" + day + " " + hh + ":" + mm ;
+        }
+        //处理json中的DateTime类型
+        function ConvertJSONDateToJSDate(jsondate) {
+            var date = new Date(parseInt(jsondate.replace("/Date(", "").replace(")/", ""), 10));
+            return getDateTime(date);
+        }
+
+    </script>
+    <style type="text/css">
+body{font-family:"Microsoft YaHei";}
+ul li{list-style:none;}
+li{list-style:none;}
+a{color:#333; text-decoration:none;}
+.clear{clear:both; display:inline;}
+
+
+
+
+.main_list{ overflow: hidden;}
+.main_list li{height: 150px;padding: 30px 30px 0 20px;border-bottom: 1px solid #c4c0c0; overflow:hidden;}
+.cat-list li{ padding-right: 8px;}
+
+
+.main_list .name {height:50px;line-height: 40px;overflow: hidden;font-size:40px; font-weight:normal;}
+.main_list .name a{color:#474747;}
+.qihao {font-size:35px;color:#707070;padding-left:20px; display:inline;}
+.soft-size {font-size:30px;color:#707070;}
+
+.main_list .info{float:left;padding-top:15px; height:40px; line-height:35px;overflow:hidden;}
+
+
+.btn_dl_nor{float:right; font-weight:bolder; margin-top:30px;   color:#999; font-size:50px;}
+
+.more_tip{height:40px; text-align: center;line-height:40px; color:#a7a7a7; font-size:16px; background:#f4f4f4; clear:both;}
+
+.sjbz{ margin-top:10px;}
+.sjbz .title{ height:34px; line-height:34px; border-bottom:1px solid #e5e5e5; padding-left:10px;}
+.sjbz .title b{ font-weight:normal; display:block; width:6px; height:20px; margin-top:7px; background:#a0d708; float:left;}
+.sjbz .title span{font-size:16px; color:#505050; float:left; margin-left:10px;}
+.sjbz_box{ padding:10px 1% 0;}
+.sjbz_box li{ float:left; width:135px; margin-left:12px; height:190px; margin-bottom:15px;}
+.sjbz_box li img{ width:135px;height:190px ;}
+
+.sjbz_more{height:39px; text-align: center;line-height:39px; border-top:1px solid #e5e5e5;font-size:16px; background:#f4f4f4;color:#a7a7a7; clear:both;}
+.sjbz_more a{ color:#6bb106; }
+
+
+
+    </style>
+</head>
+<body>
+
+<header>
+<a href="javascript:history.go(-1)" class="back">返回</a>
+<h1>开奖信息</h1>
+</header>
+    <section class="sign-module">
+
+<div class="main_list">
+   <ul id="kjList">
+        @* <li>
+           <div style="float:left;">
+               <span class="name">广东快乐十分</span>
+               <span class="qihao"> 第20202020期 2018-04-04 00:00</span>
+               <div class="soft-size">
+                    <div class="num_sel">
+                        <div class="dlt_xh">
+                            <div class="xh">
+                                <a href="javascript:;" class="selected">01</a>
+                                <a href="javascript:;" class="selected">01</a>
+                                <a href="javascript:;" class="selected">01</a>
+                                <a href="javascript:;" class="selected">01</a>
+                                <a href="javascript:;" class="selected">01</a>
+                                <a href="javascript:;" class="selected">01</a>
+                                <a href="javascript:;" class="selected">01</a>
+                                <a href="javascript:;" class="selected">01</a>
+                                </div>
+                            </div>
+                        </div>
+
+               </div>
+               </div>
+           <div class='btn_dl_nor'><a href="#"  target='_blank' > 〉 </a></div>
+       </li>
+      *@
+   </ul>
+ </div>
+</section>
+
+<div class="sub">
+	<div>
+		<a href="/Home/Index" class="a1 a_1">首页</a>
+	</div>
+	<div>
+		<a href="/Home/Trend" class="a2 a_2">走势</a>
+	</div>
+	<div>
+		<a href="/Home/RunLottery" class="a3">开奖</a>
+	</div>
+	<div>
+		<a href="/Home/MyInfo" class="a4 a_4">我的</a>
+	</div>
+</div>
+
+</body>
+</html>

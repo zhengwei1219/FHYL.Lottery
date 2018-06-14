@@ -1,0 +1,30 @@
+.edtitable {
+	margin: 20px auto; border: 1px solid rgb(170, 170, 170); border-image: none; width: 90%; text-align: center; border-collapse: collapse; table-layout: fixed;
+}
+.edtitable thead tr {
+	background:#f1faf4;
+}
+.edtitable tr {
+	border: 1px solid rgb(170, 170, 170); border-image: none;
+}
+.edtitable tr td input {
+	
+}
+.edtitable tr th {
+	border: 1px solid rgb(170, 170, 170); border-image: none; height: 80px; min-width: 50px; line-height:80px; font-size:40px
+}
+td {
+	border: 1px solid rgb(170, 170, 170); border-image: none; height: 80px; min-width: 50px;line-height:80px;font-size:40px
+}
+.edtitable tr .del-col {
+	
+}
+.edtitable tr a {
+	color: rgb(0, 0, 0);
+}
+.edtitable .append-row {
+	background: rgb(213, 213, 213) !important;
+}
+.edtitable .append-row td {
+	padding-right: 2.7%;
+}

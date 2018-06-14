@@ -1,0 +1,136 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0;" name="viewport">
+<meta content="user-scalable=no" name="viewport">
+    <title>个人中心</title>
+    <link href="~/Content/style.css?v=18031217" rel="stylesheet" />
+    <link href="~/Content/component.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    <script src="~/Scripts/scrollleft.js"></script>
+    <script src="~/Scripts/tabscript.js"></script>
+    <script src="~/Scripts/scroll.js"></script>
+
+</head>
+<body>
+<div class="wrapper">
+	<div class="gezx">		
+            @if (User.Identity.IsAuthenticated)
+            { 
+             <div style="color:white;font-size:18px;text-align:right;padding:8px"><a href="/Login/LoginOut">退出</a></div>
+                <dl class="gface">
+            <dt><img src="~/Content/Picture/default.jpg" /></dt>
+			<dd>@User.Identity.Name</dd>
+                    </dl>
+            }else
+            {
+                <dl class="gface">
+			<dt><a href="/Login/Index"><img src="~/Content/Picture/default.jpg" /></a></dt>
+			<dd><a href="/Login/Index">点击登录</a></dd>
+                </dl>
+            }
+		@*<ul>
+			<li style="background:none">
+			<p>
+				累计获胜
+			</p>
+			<p class="ff">
+				0
+			</p>
+			</li>
+			<li>
+			<p>
+				佣金
+			</p>
+			<p class="ff">
+				0
+			</p>
+			</li>
+			<li>
+			<p>
+				余额
+			</p>
+			<p class="ff">
+				@ViewBag.Balance
+			</p>
+			</li>
+		</ul>*@
+        @if (@User.Identity.Name == "zhengwei")
+        {
+            <div style="width:100%">
+             <div class="cz" style="width:50%;">
+			<a href="/Home/CashPage">提现</a>
+		</div>
+            <div class="cz" style="width:50%;">
+			<a href="/Home/RechargePage">充值</a>
+		</div>
+                </div>
+        }
+        else
+        {
+            
+          
+          
+        }
+         <div style="width:100%">
+             <div class="cz" style="width:10%;">
+		</div>
+             <div class="cz" style="width:80%; border-bottom:dashed 1px #ffffff;">
+		</div>
+            <div class="cz" style="width:10%;">
+		</div>
+                </div>
+			<ul>
+                <li><p>
+				余额：@ViewBag.Balance 元
+                </p>
+                    </li>
+                 <li><p>
+				<a href="JavaScript:alert('该功能尚未开放，请联系管理员')">充值</a>
+                </p>
+                    </li>
+                 <li><p>
+				<a href="JavaScript:alert('该功能尚未开放，请联系管理员')">提现</a>
+                </p>
+                    </li>
+			</ul>
+	</div>
+	<div class="gclass">
+		<a href="/RechargeRecord/Index" class="recharge">充值记录</a><a href="/CashRecord/Index" class="cash">提现记录</a><a href="#" class="red">红包奖励</a>
+	</div>
+	<div class="gclass">
+        <a href="/BetRecord/Index?lotteryType=win" class="zhong">中奖记录</a><a href="/BetRecord/Index?lotteryType=all" class="tzjl">投注记录</a><a href="#" class="g6">六合彩记录</a>
+	</div>
+</div>
+    
+<div class="sub">
+	<div>
+		<a href="/Home/Index" class="a1 a_1">首页</a>
+	</div>
+	<div>
+		<a href="/Home/Trend" class="a2 a_2">走势</a>
+	</div>
+	<div>
+		<a href="/Home/RunLottery" class="a3 a_3">开奖</a>
+	</div>
+	<div>
+		<a href="/Home/MyInfo" class="a4">我的</a>
+	</div>
+</div>
+</body>
+</html>

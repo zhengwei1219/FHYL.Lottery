@@ -1,0 +1,105 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<title>冲值</title>
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta content="telephone=no" name="format-detection" />
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        var GetRechargeRecordUrl = '@Url.Action("GetRechargeRecordList", "RechargeRecord")';
+        $(function () {
+            initRechargeRecord();
+        });
+        function initRechargeRecord()
+        {
+            $.ajax({
+                type: "POST",
+                url: GetRechargeRecordUrl,
+                data: {},
+                success: function (data) {
+                    if (data != null) {
+                        $("#recharge").append(data);
+                    }
+                }
+            });
+        }
+    </script>
+    <style type="text/css">
+body,table{
+font-size:14px;
+}
+table{
+table-layout:fixed;
+empty-cells:show;
+border-collapse: collapse;
+margin:0 auto;
+}
+td{
+height:30px;
+}
+h1,h2,h3{
+font-size:12px;
+margin:0;
+padding:0;
+}
+.table{
+border:1px solid #cad9ea;
+color:#666;
+}
+.table th {
+background-repeat:repeat-x;
+height:30px;
+}
+.table td,.table th{
+border:1px solid #cad9ea;
+padding:0 1em 0;
+}
+.table tr.alter{
+background-color:#f5fafe;
+} 
+    </style>
+</head>
+<body>
+
+<header>
+<a href="javascript:history.go(-1)" class="back">返回</a>
+<h1>充值记录</h1>
+</header>
+    <div style="height:10px;width:100%"></div>
+<section class="sign-module">
+<table style="width:100%;text-align:center"class="table">
+    <thead>
+        <tr><th>充值人</th><th>充值金额</th><th>充值时间</th></tr>
+    </thead>
+    <tbody id ="recharge">
+        
+    </tbody>
+</table>
+
+
+@*<div class="other-way">
+<header>
+</header>
+</div>*@
+</section>
+<div id="alpha_cover" class="alpha-cover"></div>
+<div class="loading" id="loading">
+<span class="loading-ring"></span>
+</div>
+
+
+<div id="stats-box"></div>
+
+</body>
+</html>

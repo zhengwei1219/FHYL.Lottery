@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="80155734241a45f6a1f99a7b9ce641cc" Name="关系图1" ZoomLevel="77">
+        <EntityTypeShape EntityType="LotteryModel.UserInfo" Width="1.5" PointX="0.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LotteryModel.Account" Width="1.5" PointX="6.5" PointY="7.75" />
+        <EntityTypeShape EntityType="LotteryModel.RechargeRecord" Width="1.5" PointX="6.5" PointY="5" />
+        <AssociationConnector Association="LotteryModel.FK_Account_UserInfo" />
+        <AssociationConnector Association="LotteryModel.FK_RechargeRecord_UserInfo" />
+        <EntityTypeShape EntityType="LotteryModel.CashRecord" Width="1.5" PointX="6.5" PointY="1.5" />
+        <AssociationConnector Association="LotteryModel.FK_CashRecord_CashRecord" />
+        <AssociationConnector Association="LotteryModel.FK_CashRecord_CashRecord1" />
+        <EntityTypeShape EntityType="LotteryModel.LotteryResult" Width="1.5" PointX="10.5" PointY="5.25" />
+        <EntityTypeShape EntityType="LotteryModel.BetChildRecord" Width="1.5" PointX="10.625" PointY="7.875" />
+        <EntityTypeShape EntityType="LotteryModel.BetRecord" Width="1.5" PointX="8.75" PointY="8" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

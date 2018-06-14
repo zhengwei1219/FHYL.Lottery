@@ -1,0 +1,146 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+<meta content="no-cache,must-revalidate" http-equiv="Cache-Control">
+<meta content="no-cache" http-equiv="pragma">
+<meta content="0" http-equiv="expires">
+<meta content="telephone=no, address=no" name="format-detection">
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0;" name="viewport">
+<meta content="user-scalable=no" name="viewport">
+    <title>快乐十分钟---首页</title>
+    <link href="~/Content/indexstyle.css?v=201803278" rel="stylesheet" />
+    <link href="~/Content/component.css" rel="stylesheet" />
+    <link href="~/Content/swiper.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    <script src="~/Scripts/scrollleft.js"></script>
+    <script src="~/Scripts/tabscript.js"></script>
+    <script src="~/Scripts/scroll.js"></script>
+    <script src="~/Scripts/nexttime2.js"></script>
+    <script src="~/Scripts/swiper.min.js"></script>
+<script>
+    var get_next_open_time_url = "http://mall.mfchong.com/index.php?routeurl=index-index-get_next_open_time",
+        daojishi_reload_url = "http://mall.mfchong.com/index.php",
+        load_order_url = "http://mall.mfchong.com/index.php?routeurl=index-index-order_list",
+        load_order_win_url = "http://mall.mfchong.com/index.php?routeurl=index-index-order_win_list",
+        load_new_order_url = "http://mall.mfchong.com/index.php?routeurl=index-index-load_new_order",
+        user_id = "", daojishi = "2017/09/09 10:00:00";
+</script>
+    <style>
+body{background:#f0f0f0}
+ .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+.swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- Swiper -->
+    <div class="topbanner">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+           <img src="~/Content/Picture/topbanner3.png" />
+      </div>
+      <div class="swiper-slide">
+          <img src="~/Content/Picture/topbanner2.jpg?v=113" />
+      </div>
+      <div class="swiper-slide">
+         <img src="~/Content/Picture/topbanner.png?v=112" />
+      </div>
+     
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+  <!-- Initialize Swiper -->
+  <script>
+      var swiper = new Swiper('.swiper-container', {
+          pagination: {
+              el: '.swiper-pagination',
+          },
+          autoplay: {
+              delay:2000
+          }
+      });
+  </script>
+<div class="scrollleftdiv">
+	<div class="ico">
+	</div>
+<div class="scrollleft" id="topscroll" style="overflow: hidden; position: relative;">
+    <ul style="margin: 0px; padding: 0px; overflow: hidden; position: relative; list-style: none; width: 6138px; ">
+        <li style="position: relative; overflow: hidden; float: left;">热烈祝贺本站全新改版上线！</li>
+        <li style="position: relative; overflow: hidden; float: left;">欢迎光临</li>
+        <li style="position: relative; overflow: hidden; float: left;">恭喜[猎奇]中得100元！</li>
+        <li style="position: relative; overflow: hidden; float: left;">恭喜[香香^ ^]中得56元！</li>
+        </ul></div>
+</div>
+<div class="wrapper">
+    <div class="gclass"><br />
+		<a href="/buy/Klsf" class="g1"><div style="padding-top:10px;"> 广东快乐十分</div></a>
+        <br />
+        <a href="/buy/gd11x5" class="g2">广东11选5</a>
+        
+        <a href="/buy/ssc" class="g3">重庆时时彩</a>
+	</div>
+    <div class="gclass"><br />
+		<a href="/buy/bjlsg" class="g4">澳门百家乐三公</a>
+        <a href="/buy/lhc" class="g5">六合彩</a>
+        <a href="/Home/Test" >测试页面</a>
+	</div>
+    <div class="gclass">
+        <img src="/images/contont.jpg" width="100%" />
+        </div>
+   
+</div>
+    
+		
+        
+<div class="sub">
+	<div>
+		<a href="/Home/Index" class="a1">首页</a>
+	</div>
+	<div>
+		<a href="/Home/Trend" class="a2 a_2">走势</a>
+	</div>
+	<div>
+		<a href="/Home/RunLottery" class="a3 a_3">开奖</a>
+	</div>
+	<div>
+		<a href="/Home/MyInfo" class="a4 a_4">我的</a>
+	</div>
+</div>
+</body>
+</html>

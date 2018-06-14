@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<title>投注详情</title>
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta content="telephone=no" name="format-detection" />
+    <link href="~/Content/login.css?v=1803126" rel="stylesheet" />
+    <link href="~/Content/showLoading.css" rel="stylesheet" />
+<link href="~/content/buy/component.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/buy/calculator.css?v=1803125" rel="stylesheet" />
+    <script type="text/javascript" src="~/content/buy/jquery.js"></script>
+<script type="text/javascript" src="~/content/buy/modernizr.custom.js"></script>
+    <script src="~/Scripts/jquery.showLoading.min.js"></script>
+@*<script type="text/javascript" src="~/content/buy/jquery.dlmenu.js"></script>*@
+    <script src="~/Content/buy/jquery.dlmenu.js"></script>
+    <script type="text/javascript">
+       
+    </script>
+
+</head>
+<body>
+
+<header>
+<a href="javascript:history.go(-1)" class="back">返回</a>
+<h1>投注详情</h1>
+
+</header>
+    
+<section class="sign-module">
+    <div class="buytitle">
+        <div class="titleleft">@ViewBag.lotteryType &nbsp;第 @ViewBag.expect 期</div><br />
+         <div class="titleleftkj" id="openCode">
+         </div>
+    </div>
+
+    <div style="border-bottom:10px solid #E3E3E3;height:100px;">
+                    <div style="text-align:center" >投注详情</div>
+                     投注金额： <span style="padding:4px">@ViewBag.BetMoney</span>元<br />
+                     注单总数： <span style="padding:4px">@ViewBag.BetCount</span>注<br />
+                     开奖状态： <span style="padding:4px">@ViewBag.LotteryState</span>
+                </div>
+    <div>
+                    <div id="BetChild" style="text-align:center">投注号码</div>
+                     
+                </div>
+ 
+</section>
+    
+</body>
+</html>
+<script type="text/javascript">
+    var GetBetChildRecordUrl = '@Url.Action("GetBetChildRecordList", "BetRecord")';
+    $(function () {
+        initBetChildRecord();
+        var Opencode = '@ViewBag.Opencode';
+        var codes = Opencode.split(',');
+        var html = "";
+        for (var i = 0; i < codes.length; i++) {
+           
+           html += "  <a href=\"javascript:;\" class=\"selected\">" + codes[i] + "</a>";
+        }
+        $("#openCode").html(html);
+    });
+    //投注详细信息
+    function initBetChildRecord() {
+        
+        $("#BetChild").showLoading();
+        $.ajax({
+            type: "POST",
+            url: GetBetChildRecordUrl,
+            data: { parentId: '@ViewBag.parentId' },
+                success: function (data) {
+
+                    var html = "";
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].WinState == null) data[i].WinState = "未开奖";
+                        if (data[i].WinState=='中奖') {
+                            html += "<div style='text-align:left'>第" + data[i].BetBallNo + "球|" + data[i].BetInfo + ":" + data[i].Odds + " " + data[i].BetMoney + "<span class ='isWin' style='color:red'>(" + data[i].WinState + ")</span></div><br/>";
+                        } else {
+                            html += "<div style='text-align:left'>第" + data[i].BetBallNo + "球|" + data[i].BetInfo + ":" + data[i].Odds + " " + data[i].BetMoney + "<span>(" + data[i].WinState + ")</span></div><br/>";
+                        }
+                        
+
+                    }
+
+                    $("#BetChild").append(html);
+                }
+
+            });
+        }
+</script>

@@ -1,0 +1,73 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<title>冲值</title>
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta content="telephone=no" name="format-detection" />
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        function afterLogin(data) {
+            if (data == "ok") {
+                alert("充值成功！");
+                window.location.href = "/Home/MyInfo"
+            } else {
+                $("#errorMsg").html(data);
+                $("#errorMsg").css("display","block");
+            }
+        }
+    </script>
+</head>
+<body>
+
+<header>
+<a href="javascript:void(0)javascript:history.back()" class="back">返回</a>
+<h1>充值中心</h1>
+</header>
+    <div style="height:100px;width:100%"></div>
+<section class="sign-module">
+@using (Ajax.BeginForm("Recharge", "Home", new { }, new AjaxOptions() { HttpMethod = "post", OnSuccess = "afterLogin", LoadingElementId = "div1" }, new { id = "loginForm" }))
+{
+
+<ul class="sign-form-list">
+<li class="user">
+<input type="text" id="username" name="username" placeholder="请输入手机号" />
+</li>
+<li class="money">
+<input type="text" id="Money" name="Money" placeholder="请输入金额 " />
+</li>
+</ul>
+<div class="status-wrap">
+
+<div class="error-info" id="err_info"></div>
+</div>
+<input type="submit" value="确定" />
+    <span id="errorMsg" style="font-size:14px;color:red;display:none"></span>
+}
+
+
+<div class="other-way">
+<header>
+</header>
+</div>
+</section>
+<div id="alpha_cover" class="alpha-cover"></div>
+<div class="loading" id="loading">
+<span class="loading-ring"></span>
+</div>
+
+
+<div id="stats-box"></div>
+
+</body>
+</html>

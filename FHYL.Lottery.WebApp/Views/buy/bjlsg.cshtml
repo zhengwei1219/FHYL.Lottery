@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<title>投注</title>
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta content="telephone=no" name="format-detection" />
+    <link href="~/Content/login.css?v=1803126" rel="stylesheet" />
+<link href="~/content/buy/component.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/buy/calculator.css?v=1803125" rel="stylesheet" />
+    <script type="text/javascript" src="~/content/buy/jquery.js"></script>
+<script type="text/javascript" src="~/content/buy/modernizr.custom.js"></script>
+<script type="text/javascript" src="~/content/buy/jquery.dlmenu.js"></script>
+    <script type="text/javascript" src="~/content/buy/buy.js"></script>
+    <script type="text/javascript">
+       
+    </script>
+
+</head>
+<body>
+
+<header>
+<a href="javascript:history.go(-1)" class="back">返回</a>
+<h1>百家乐三公</h1>
+
+    <div id="dl-menu" class="dl-menuwrapper">
+		<button id="dl-menu-button">Open Menu</button>
+		<ul class="dl-menu">
+			<li><a href="#">投注记录</a></li>
+			<li><a href="#">规则介绍</a></li>
+		</ul>
+	</div>
+</header>
+    <script type="text/javascript">
+        var btns;
+        $(function () {
+            $('#dl-menu').dlmenu();
+            btns = $(".dlt_xh").find("a");
+            btns.click(function () {
+                $(this).toggleClass("selected");
+                $("#dv_buyed").html("已选择 " + SumBuy() + " 注 " + SumBuyMoney() + " 元");
+            });
+            $('#dv_pay').click(function () {
+                return;
+            });
+        });
+        //计算
+        function SumBuy() {
+            return $("#dv_nums").find(".selected").length;
+        }
+        //计算
+        function SumBuyMoney() {
+            return SumBuy() * 2;
+        }
+
+</script>
+<section class="sign-module">
+    <div class="buytitle">
+        <div class="titleleft">@ViewBag.lotteryType &nbsp;@ViewBag.expect 期开奖</div><div class="titleright">距离 @ViewBag.nextExpect 期</div>
+         <div class="titleleftkj">@ViewBag.Opencode</div><div class="titleright">截止投注 00:09:10</div>
+    </div>
+    <div id="dv_nums">
+    
+    <div class="num_sel">
+    <div class="dlt_xh">
+                    <div class="dlt_title">&nbsp;&nbsp;百家乐三公</div>
+                    <div class="xh" id="box_first">
+                       <a href="javascript:;">庄</a>
+                        <a href="javascript:;">闲</a>
+                        <a href="javascript:;">和</a>
+                        <ul>
+                            <li>1.96</li>
+                            <li>1.96</li>
+                            <li>8</li>
+                        </ul>
+
+                    </div>
+                </div>        </div>
+   
+        </div>
+</section>
+    <div class="sub">
+        <div class="div1"><img  style="margin:auto;" src="~/images/rec.png" width="28" height="28" onclick="RecAll()"/></div>
+        <div  class="div2" id="dv_buyed">已选择 0 注 0 元
+        </div>
+	<div  class="div3" id="dv_pay">
+        下注
+        </div>
+        </div>
+    
+</body>
+</html>

@@ -1,0 +1,175 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no">
+<meta content="application/xhtml+xml;charset=UTF-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0;" name="viewport">
+    <meta content="user-scalable=no" name="viewport">
+<meta http-equiv="cache-control" content="no-cache" />
+<meta content="telephone=no, address=no" name="format-detection">
+    <title>走势</title>
+    <link href="~/Content/headersub.css?v=180312131" rel="stylesheet" />
+    <link href="~/content/Trend/component.css?v=18031311" rel="stylesheet" type="text/css">
+    <link href="~/Content/style.css?v=18031217" rel="stylesheet" />
+        <script type="text/javascript" src="~/content/buy/jquery.js"></script>
+<script type="text/javascript" src="~/content/buy/modernizr.custom.js"></script>
+<script type="text/javascript" src="~/content/buy/jquery.dlmenu.js"></script>
+    <link href="~/Content/TrendTable.css?v=18031217" rel="stylesheet" />
+    <script src="~/Scripts/iscroll.js?v=1803125"></script>
+    <script src="~/Scripts/navbarscroll.js"></script>
+    <script type="text/javascript">
+        var lotteryType; 
+        $(function () {
+            if('@Request.Params["lotteryType"]' == "")
+                lotteryType = "广东快乐十分";
+            else
+                lotteryType = '@Request.Params["lotteryType"]';
+            initNavbarscroll();
+            // demo示例一到四 通过lass调取，一句可以搞定，用于页面中可能有多个导航的情况
+           
+
+        });
+        function initNavbarscroll() {
+            $('.wrapper').navbarscroll({
+                endClickScroll: function (obj) {
+                    initRechargeRecord(obj.text());
+                }
+            });
+        }
+        function initRechargeRecord(RecType) {
+
+            var GetLotteryResultUrl = '@Url.Action("GetLotteryResultHtml", "LotteryResult")' + "?lotteryType=" + escape(lotteryType);
+            $.ajax({
+                type: "POST",
+                url: GetLotteryResultUrl,
+                data: {},
+                success: function (data) {
+                    switch (RecType) {
+                        case "号码":
+                            $("#number").html(data.number);
+                            break;
+                        case "特码":
+                            $("#number").html(data.number);
+                            break;
+                        case "大小":
+                            $("#number").html(data.bigorSmall);
+                            break;
+                        case "单双":
+                            $("#number").html(data.evenOrOdd);
+                            break;
+                        case "总和/龙虎":
+                            $("#number").html(data.total);
+                            break;
+                    }
+                    $("tbody tr:odd").css("background-color", "#f1faf4");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+<header>
+<a href="javascript:history.go(-1)" class="back">返回</a>
+<div id="dl-menu1"  class="dl-menuwrapper1">
+    @if(Request.Params["lotteryType"] == null)
+    {
+		<button>广东快乐十分 ∨</button>
+    }else
+    {
+        <button>@Request.Params["lotteryType"] ∨</button>
+    }
+		<ul class="dl-menu">
+			 <li><a href="\home\Trend?lotteryType=广东快乐十分">广东快乐十分</a></li>
+    <li><a href="\home\Trend?lotteryType=广东11选5">广东11选5</a></li>
+    <li><a href="\home\Trend?lotteryType=重庆时时彩">重庆时时彩</a></li>
+    <li><a href="#">百家乐三公</a></li>
+    <li><a href="\home\Trend?lotteryType=六合彩">六合彩</a></li>
+		</ul>
+	</div>
+</header>
+     <script type="text/javascript">
+         $(function () {
+             $('#dl-menu1').dlmenu();
+
+         });
+
+
+</script>
+    <style type="text/css">
+        del{text-decoration:line-through}
+
+		q:before,q:after{content:''}
+		iframe,img {border:0;}
+		img{display:block;width:100%;}
+		input {-webkit-appearance: none;}
+		.pr{position:relative;}
+		.abs{position: absolute}
+		.fl{float:left;display:inline-block;}
+		.fr{float:right;display:inline-block;}
+		.clearfix:after{content:".";display:block;height:0;clear: both;visibility:hidden;}
+		
+		.wrap{min-width: 320px;max-width:768px;margin:0 auto;overflow:hidden;}
+
+        .wrapper { padding-bottom:0px; -webkit-backface-visibility:hidden; -moz-backface-visibility:hidden; -ms-backface-visibility:hidden; -o-backface-visibility:hidden;backface-visibility:hidden; z-index:1; }
+		.htit{line-height:1rem;padding:0 .3rem;color:#ff8e2e;font-size: .4rem;margin:1rem 0 .4rem 0}
+        .wrapper03 {height: 80px;width: 100%;overflow: hidden;margin:0 auto;border-bottom:1px solid #ccc;}
+		
+		.wrapper03 .scroller li { width:33%; height: 80px;color:#333;float: left;line-height: 80px;font-size: 40px;text-align: center}
+		.wrapper03 .scroller li a{color:#333;margin:0 ;padding:0 30px;}
+		.wrapper03 .scroller li.cur a{color:#1cbb9b;height:.9rem;border-bottom:.1rem solid #1cbb9b}
+        .dl-menuwrapper1 li {
+            float: none;
+        }
+    </style>
+    <section class="sign-module">
+<div class="wrapper wrapper03" id="wrapper03">
+	<div class="scroller">
+		<ul class="clearfix">
+            @if(Request.Params["lotteryType"] != null &&Request.Params["lotteryType"] == "六合彩")
+            {
+			    <li><a href="javascript:void(0)">特码</a></li>
+            }
+            else
+            {
+			    <li><a href="javascript:void(0)">号码</a></li>
+            }
+            
+			<li><a href="javascript:void(0)">大小</a></li>
+			<li><a href="javascript:void(0)">单双</a></li>
+			@*<li><a href="javascript:void(0)">总和/龙虎</a></li>*@
+		</ul>
+	</div>
+</div>
+<div >       
+       <table id="number" style="width:100%;text-align:center" class="edtitable">
+            </table>
+</div>
+</section>
+
+<div class="sub">
+	<div>
+		<a href="/Home/Index" class="a1 a_1">首页</a>
+	</div>
+	<div>
+		<a href="/Home/Trend" class="a2">走势</a>
+	</div>
+	<div>
+		<a href="/Home/RunLottery" class="a3 a_3">开奖</a>
+	</div>
+	<div>
+		<a href="/Home/MyInfo" class="a4 a_4">我的</a>
+	</div>
+</div>
+
+</body>
+</html>

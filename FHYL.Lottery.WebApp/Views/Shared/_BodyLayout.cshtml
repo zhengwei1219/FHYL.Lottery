@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+     <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/component.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/common.js"></script>
+    <script src="~/Scripts/scrollleft.js"></script>
+    <script src="~/Scripts/tabscript.js"></script>
+    <script src="~/Scripts/scroll.js"></script>
+</head>
+<body>
+        <div id="outer" style="margin-bottom: -18px;">
+        <div id="centrecontent">
+            <div style="margin: 0px;">
+                @RenderSection("featured", required: false)
+                <section class="content-wrapper main-content clear-fix">
+                    @RenderBody()
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="sub">
+	<div>
+		<a href="/Home/Index" class="a1 a_1">首页</a>
+	</div>
+	<div>
+		<a href="/Home/Trend" class="a2 a_2">走势</a>
+	</div>
+	<div>
+		<a href="/Home/RunLottery" class="a3 a_3">开奖</a>
+	</div>
+	<div>
+		<a href="/Home/MyInfo" class="a4">我的</a>
+	</div>
+</div>
+</body>
+</html>

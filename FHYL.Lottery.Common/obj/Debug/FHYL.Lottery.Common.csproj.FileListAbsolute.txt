@@ -1,0 +1,14 @@
+F:\LotteryProject\FHYL.Lottery\FHYL.Lottery.Common\bin\Debug\FHYL.Lottery.Common.dll
+F:\LotteryProject\FHYL.Lottery\FHYL.Lottery.Common\bin\Debug\FHYL.Lottery.Common.pdb
+F:\LotteryProject\FHYL.Lottery\FHYL.Lottery.Common\obj\Debug\FHYL.Lottery.Common.csprojResolveAssemblyReference.cache
+F:\LotteryProject\FHYL.Lottery\FHYL.Lottery.Common\obj\Debug\FHYL.Lottery.Common.dll
+F:\LotteryProject\FHYL.Lottery\FHYL.Lottery.Common\obj\Debug\FHYL.Lottery.Common.pdb
+D:\project\A2_COLLECT\FHYL.Lottery\FHYL.Lottery.Common\bin\Debug\FHYL.Lottery.Common.dll
+D:\project\A2_COLLECT\FHYL.Lottery\FHYL.Lottery.Common\bin\Debug\FHYL.Lottery.Common.pdb
+D:\project\A2_COLLECT\FHYL.Lottery\FHYL.Lottery.Common\obj\Debug\FHYL.Lottery.Common.dll
+D:\project\A2_COLLECT\FHYL.Lottery\FHYL.Lottery.Common\obj\Debug\FHYL.Lottery.Common.pdb
+D:\project\A2_COLLECT\FHYL.Lottery\FHYL.Lottery.Common\obj\Debug\FHYL.Lottery.Common.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\FHYL_Lottery\FHYL.Lottery\FHYL.Lottery.Common\bin\Debug\FHYL.Lottery.Common.dll
+C:\Users\Administrator\Desktop\FHYL_Lottery\FHYL.Lottery\FHYL.Lottery.Common\bin\Debug\FHYL.Lottery.Common.pdb
+C:\Users\Administrator\Desktop\FHYL_Lottery\FHYL.Lottery\FHYL.Lottery.Common\obj\Debug\FHYL.Lottery.Common.dll
+C:\Users\Administrator\Desktop\FHYL_Lottery\FHYL.Lottery\FHYL.Lottery.Common\obj\Debug\FHYL.Lottery.Common.pdb

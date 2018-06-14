@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<webSiteService>
+  <webSite>
+    <lotteryType>广东快乐十分</lotteryType>
+    <url><![CDATA[http://api.caipiaokong.cn/lottery/?name=gdklsf&format=json&uid=972961&token=e6a9e6ea5a7b8f73d721144cac2b76a633b805b0&order=sort&num=5]]></url>
+  </webSite>
+  <webSite>
+    <lotteryType>广东11选5</lotteryType>
+    <url><![CDATA[http://api.caipiaokong.cn/lottery/?name=gdsyxw&format=json&uid=972961&token=e6a9e6ea5a7b8f73d721144cac2b76a633b805b0&order=sort&num=5]]></url>
+  </webSite>
+  <webSite>
+    <lotteryType>重庆时时彩</lotteryType>
+    <url><![CDATA[http://api.caipiaokong.cn/lottery/?name=cqssc&format=json&uid=972961&token=e6a9e6ea5a7b8f73d721144cac2b76a633b805b0&order=sort&num=5]]></url>
+  </webSite>
+  <webSite>
+    <lotteryType>六合彩</lotteryType>
+    <url><![CDATA[http://api.caipiaokong.cn/lottery/?name=xglhc&format=json&uid=972961&token=e6a9e6ea5a7b8f73d721144cac2b76a633b805b0&order=sort&num=1]]></url>
+  </webSite>
+</webSiteService>

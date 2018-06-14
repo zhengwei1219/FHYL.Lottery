@@ -1,0 +1,180 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>投注</title>
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta content="telephone=no" name="format-detection" />
+    <link href="~/Content/login.css?v=1803126" rel="stylesheet" />
+<link href="~/content/buy/component.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/buy/calculator.css?v=1803127" rel="stylesheet" />
+    <script type="text/javascript" src="~/content/buy/jquery.js"></script>
+     <script type="text/javascript" src="~/Scripts/TimeOut.js?v=21"></script>
+<script type="text/javascript" src="~/content/buy/modernizr.custom.js"></script>
+<script type="text/javascript" src="~/content/buy/jquery.dlmenu.js"></script>
+    <script type="text/javascript" src="~/content/buy/buy.js"></script>
+    <script type="text/javascript">
+       
+    </script>
+
+</head>
+<body>
+
+<header>
+<a href="javascript:location.href='/home/index';" class="back">返回</a>
+<div id="dl-menu1"  class="dl-menuwrapper1">
+		<button>两面盘  ∨</button>
+		<ul class="dl-menu">
+   <li><a href="/Buy/ssc">两面盘</a></li>
+   <li><a href="/Buy/sscNumber">1-5球</a></li>
+		</ul>
+	</div>
+
+    <div id="dl-menu" class="dl-menuwrapper">
+		<button id="dl-menu-button">Open Menu</button>
+		<ul class="dl-menu">
+			<li><a href="/BetRecord/Index?lotteryType=重庆时时彩">投注记录</a></li>
+			<li><a href="/PlayRule/cqssc">规则介绍</a></li>
+            <li><a href="/Home/Trend?lotteryType=重庆时时彩">开奖走势</a></li>
+		</ul>
+	</div>
+</header>
+    <script type="text/javascript">
+        var getdataUrl = "/Buy/GetNextData";
+        var n = 0, timer = null;
+        var btns;
+        var currExp = "";
+        var lotteryType = '@ViewBag.lotteryType';
+        $(function () {
+            // countDown();
+            currExp = "@ViewBag.expect";
+            getdata(lotteryType);
+            $('#dl-menu').dlmenu();
+            $('#dl-menu1').dlmenu();
+            ContorlButton(false, lotteryType);
+        });
+        
+        //补零
+        function toDub(n) {
+            return n < 10 ? "0" + n : "" + n;
+        }
+        //计算
+        function SumBuy() {
+            return $("#dv_nums").find(".selected").length;
+        }
+        //计算
+        function SumBuyMoney() {
+            return SumBuy() * 2;
+        }
+</script>
+<section class="sign-module">
+    <div class="buytitle">
+         <div class="titleleft" id="CurrentExInfo">@ViewBag.lotteryType @ViewBag.expect 期开奖</div><div class="titleright1" id="nextExp">距离 @ViewBag.nextExpect 期</div>
+         <div class="titleleftkj" id="CurrentCodeInfo">@ViewBag.Opencode</div><div id="txtTimer" class="titleright">截止投注: -- : -- : --</div>
+    </div>
+    <div id="dv_nums"> 
+    <div class="num_sel">
+    <div class="dlt_xh">
+                    <div class="dlt_title">&nbsp;&nbsp;万</div>
+                    <div class="xh" id="第1球">
+                       <a href="javascript:;">大</a>
+                        <a href="javascript:;">小</a>
+                        <a href="javascript:;">单</a>
+                        <a href="javascript:;">双</a>
+                        <ul>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                        </ul>
+
+                    </div>
+                </div>        </div>
+    <div class="num_sel">
+    <div class="dlt_xh">
+                    <div class="dlt_title">&nbsp;&nbsp;千</div>
+                    <div class="xh" id="第2球">
+                        <a href="javascript:;">大</a>
+                        <a href="javascript:;">小</a>
+                        <a href="javascript:;">单</a>
+                        <a href="javascript:;">双</a>
+                        <ul>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                        </ul>
+                    </div>
+                </div>        </div>
+    <div class="num_sel">
+    <div class="dlt_xh">
+                    <div class="dlt_title">&nbsp;&nbsp;百</div>
+                    <div class="xh" id="第3球">
+                        <a href="javascript:;">大</a>
+                        <a href="javascript:;">小</a>
+                        <a href="javascript:;">单</a>
+                        <a href="javascript:;">双</a>
+                        <ul>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                        </ul>
+                        
+                    </div>
+                </div>        </div>
+           <div class="num_sel">
+    <div class="dlt_xh">
+                    <div class="dlt_title">&nbsp;&nbsp;十</div>
+                    <div class="xh" id="第4球">
+                        <a href="javascript:;">大</a>
+                        <a href="javascript:;">小</a>
+                        <a href="javascript:;">单</a>
+                        <a href="javascript:;">双</a>
+                        <ul>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                        </ul>
+                        
+                    </div>
+                </div>        </div>
+           <div class="num_sel">
+    <div class="dlt_xh">
+                    <div class="dlt_title">&nbsp;&nbsp;个</div>
+                    <div class="xh" id="第5球">
+                        <a href="javascript:;">大</a>
+                        <a href="javascript:;">小</a>
+                        <a href="javascript:;">单</a>
+                        <a href="javascript:;">双</a>
+                        <ul>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                            <li>1.92</li>
+                        </ul>
+                        
+                    </div>
+                </div>        </div>
+
+        </div>
+</section>
+    <div class="sub">
+        <div class="div1"><img  style="margin:auto;" src="~/images/rec.png" width="28" height="28"  onclick="RecAll()"/></div>
+        <div  class="div2" id="dv_buyed">已选择 0 注 0 元
+        </div>
+	<div  class="div3" id="dv_pay">
+        下注
+        </div>
+        </div>
+    
+</body>
+</html>

@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LotteryModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="LotteryModelStoreContainer">
+    <EntitySet Name="Account" EntityType="LotteryModel.Store.Account" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BetChildRecord" EntityType="LotteryModel.Store.BetChildRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="BetRecord" EntityType="LotteryModel.Store.BetRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CashRecord" EntityType="LotteryModel.Store.CashRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LotteryResult" EntityType="LotteryModel.Store.LotteryResult" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RechargeRecord" EntityType="LotteryModel.Store.RechargeRecord" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserInfo" EntityType="LotteryModel.Store.UserInfo" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Account_UserInfo" Association="LotteryModel.Store.FK_Account_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CashRecord_CashRecord" Association="LotteryModel.Store.FK_CashRecord_CashRecord">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="CashRecord" EntitySet="CashRecord" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RechargeRecord_UserInfo" Association="LotteryModel.Store.FK_RechargeRecord_UserInfo">
+      <End Role="UserInfo" EntitySet="UserInfo" />
+      <End Role="RechargeRecord" EntitySet="RechargeRecord" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Balance" Type="decimal" Nullable="false" />
+    <Property Name="IsValid" Type="bit" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BetChildRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BetRecordId" Type="int" />
+    <Property Name="BetBallNo" Type="int" />
+    <Property Name="BetType" Type="nvarchar" MaxLength="10" />
+    <Property Name="BetInfo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Odds" Type="float" />
+    <Property Name="BetMoney" Type="decimal" Scale="2" />
+    <Property Name="LotteryType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Expect" Type="nvarchar" MaxLength="50" />
+    <Property Name="WinState" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="BetRecord">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Expect" Type="nvarchar" MaxLength="50" />
+    <Property Name="BetTime" Type="datetime" />
+    <Property Name="BetMoney" Type="decimal" Scale="2" />
+    <Property Name="BetCount" Type="int" />
+    <Property Name="LotteryState" Type="nvarchar" MaxLength="50" />
+    <Property Name="BetUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="LotteryType" Type="nvarchar" MaxLength="50" />
+    <Property Name="TotalWinOrLose" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="CashRecord">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CashBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CashDate" Type="date" Nullable="false" />
+    <Property Name="CashMoney" Type="decimal" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="1000" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LotteryResult">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Expect" Type="nvarchar" MaxLength="50" />
+    <Property Name="Opencode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Opentime" Type="datetime" />
+    <Property Name="LotteryType" Type="nvarchar" MaxLength="50" />
+    <Property Name="NextExpect" Type="nvarchar" MaxLength="50" />
+    <Property Name="NextOpenTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RechargeRecord">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RechargeBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="RechargeDate" Type="date" />
+    <Property Name="RechargeMoney" Type="decimal" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="1000" />
+    <Property Name="userId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" />
+    <Property Name="DelFlag" Type="bit" />
+    <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="1000" />
+  </EntityType>
+  <Association Name="FK_Account_UserInfo">
+    <End Role="UserInfo" Type="LotteryModel.Store.UserInfo" Multiplicity="1" />
+    <End Role="Account" Type="LotteryModel.Store.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CashRecord_CashRecord">
+    <End Role="UserInfo" Type="LotteryModel.Store.UserInfo" Multiplicity="1" />
+    <End Role="CashRecord" Type="LotteryModel.Store.CashRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="CashRecord">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RechargeRecord_UserInfo">
+    <End Role="UserInfo" Type="LotteryModel.Store.UserInfo" Multiplicity="1" />
+    <End Role="RechargeRecord" Type="LotteryModel.Store.RechargeRecord" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInfo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="RechargeRecord">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

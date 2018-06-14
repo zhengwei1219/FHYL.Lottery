@@ -1,0 +1,86 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<title>登录</title>
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta content="telephone=no" name="format-detection" />
+    <link href="~/Content/login.css?v=1803121" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        function afterLogin(data) {
+            if (data == "ok") {
+                window.location.href = "/Home/MyInfo"
+            } else {
+                $("#errorMsg").css("display", "block");
+                $("#errorMsg").text(data);
+            }
+        }
+    </script>
+</head>
+<body>
+
+<header>
+<a href="javascript:history.go(-1)" class="back">返回</a>
+<h1>用户登录</h1>
+<a href="/Login/UserRegister" class="contact">注册</a>
+</header>
+<section class="sign-module">
+@using (Ajax.BeginForm("UserLogin", "Login", new { }, new AjaxOptions() {HttpMethod="post",OnSuccess="afterLogin",LoadingElementId="div1"}, new { id="loginForm"}))
+{
+<input type="hidden" name="formhash" id="formhash" value='dbdfc13f' />
+<input type="hidden" name="referer" id="referer" value="http://m.360che.com/" />
+<input type="hidden" name="fastloginfield" value="username">
+<input type="hidden" name="cookietime" value="2592000">
+
+<ul class="sign-form-list">
+<li class="user">
+<input type="text" id="username" name="LoginUserName" placeholder="请输入用户名" />
+</li>
+<li class="password">
+<input type="password" id="password" name="LoginPwd" placeholder="请输入密码" />
+<i id="view">开</i>
+</li>
+<li class="validate" style="display:none;" id="seccodeverify_Sv0BU">
+<input name="seccodehash" id="seccodehash" type="hidden" value="Sv0BU" />
+<input name="seccodeupdate" id="seccodeupdate" type="hidden" value="87869" />
+<input name="auth" id="auth" type="hidden" value="Sv0BU" />
+<input type="text" id="seccodeverify" name="seccodeverify" value="Sv0BU" placeholder="请输入右侧验证码" />
+<span class="validate-code"><img id="secodeimg" src="/misc.php?mod=seccode&amp;update=87869&amp;idhash=Sv0BU" /></span>
+</li>
+</ul>
+<div class="status-wrap">
+
+<div class="error-info" id="err_info"></div>
+</div>
+<input type="submit" value="登录" />
+    <span id="errorMsg" style="font-size:14px;color:red;display:none"></span>
+}
+
+
+<div class="other-way">
+<header>
+</header>
+</div>
+</section>
+<div id="alpha_cover" class="alpha-cover"></div>
+<div class="loading" id="loading">
+<span class="loading-ring"></span>
+</div>
+
+
+<div id="stats-box"></div>
+
+</body>
+</html>
